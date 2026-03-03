@@ -21,7 +21,16 @@ const drawGame = () => {
     msg.style.backgroundColor = "#333";
 };
 
+const stopAllSounds = () => {
+    winSound.pause();
+    winSound.currentTime = 0;
+
+    loseSound.pause();
+    loseSound.currentTime = 0;
+};
+
 const showWinner = (userWin) => {
+    stopAllSounds();
     if(userWin){
         userScore++;
         console.log("You Win , bete moj krdi");
@@ -29,7 +38,6 @@ const showWinner = (userWin) => {
         msg.style.backgroundColor = "green";
         userSc.innerText = `${userScore}`;
 
-        winSound.currentTime = 0;
         winSound.play();
     }else{
         computerScore++;
@@ -38,7 +46,6 @@ const showWinner = (userWin) => {
         msg.style.backgroundColor = "red";
         compSc.innerText = `${computerScore}`;
 
-        loseSound.currentTime = 0;
         loseSound.play();
     }
 };
